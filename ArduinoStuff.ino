@@ -111,8 +111,25 @@ void getPiData()
         input = Serial.read();
       }
     }
-        lcd.clear();
+    lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print(fullInput);
+    int inputLength = fullInput.length();
+    if(inputLength>16)
+    {
+      delay(700);
+      for(int i = 1; i<(inputLength-15); i++)
+      {
         lcd.setCursor(0,0);
-        lcd.print(fullInput);
+        lcd.print(fullInput.substring(i));
+        delay(400);
+      }
+    }
+    else
+    {
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print(fullInput);
+    }
   }
 }
